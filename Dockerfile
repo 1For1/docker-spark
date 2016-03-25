@@ -1,5 +1,5 @@
 
-FROM oneforone/backend-base:latest
+FROM oneforone/docker-mesosphere-base:latest
 
 
 MAINTAINER 1For1

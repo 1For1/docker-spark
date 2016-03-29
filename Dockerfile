@@ -14,6 +14,8 @@ ENV SPARK_MASTER_PORT 7077
 ENV SPARK_MASTER_WEBUI_PORT 8080
 ENV SPARK_WORKER_PORT 8888
 ENV SPARK_WORKER_WEBUI_PORT 9091
+ENV MASTER mesos://10.1.10.211:5050
+ENV SPARK_EXECUTOR_URI http://10.1.10.213:1080/spark-1.6.0-bin-hadoop2.6.tgz
 
 
 WORKDIR /app/
@@ -44,7 +46,8 @@ ADD scripts/remove_alias.sh /app/remove_alias.sh
 
 RUN ls -l $SPARK_HOME/conf
 RUN cp $SPARK_HOME/conf/spark-env.sh.template $SPARK_HOME/conf/spark-env.sh 
-RUN /bin/echo "export SPARK_WORKER_INSTANCES=2" >> $SPARK_HOME/conf/spark-env.sh
+RUN /bin/echo "export SPARK_WORKER_INSTANCES=2" >> $SPARK_HOME/conf/spark-env.sh \
+    && /bin/echo "export MESOS_NATIVE_JAVA_LIBRARY=/usr/lib/libmesos.so" >> $SPARK_HOME/conf/spark-env.sh
 RUN ln -s $SPARK_HOME/sbin/start-slaves.sh /start-slaves.sh
 RUN ln -s $SPARK_HOME/sbin/start-slave.sh /start-slave.sh
 

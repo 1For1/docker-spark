@@ -45,9 +45,9 @@ ADD scripts/spark-defaults.conf /app/spark-defaults.conf
 ADD scripts/remove_alias.sh /app/remove_alias.sh
 
 RUN ls -l $SPARK_HOME/conf
-RUN cp $SPARK_HOME/conf/spark-env.sh.template $SPARK_HOME/conf/spark-env.sh 
-RUN /bin/echo "export SPARK_WORKER_INSTANCES=2" >> $SPARK_HOME/conf/spark-env.sh \
-    && /bin/echo "export MESOS_NATIVE_JAVA_LIBRARY=/usr/lib/libmesos.so" >> $SPARK_HOME/conf/spark-env.sh
+RUN cp $SPARK_HOME/conf/spark-env.sh.template $SPARK_HOME/conf/spark-env.sh
+# REMOVED -  /bin/echo "export SPARK_WORKER_INSTANCES=2" >> $SPARK_HOME/conf/spark-env.sh
+RUN /bin/echo "export MESOS_NATIVE_JAVA_LIBRARY=/usr/lib/libmesos.so" >> $SPARK_HOME/conf/spark-env.sh
 RUN ln -s $SPARK_HOME/sbin/start-slaves.sh /start-slaves.sh
 RUN ln -s $SPARK_HOME/sbin/start-slave.sh /start-slave.sh
 

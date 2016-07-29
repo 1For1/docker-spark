@@ -4,7 +4,7 @@ FROM oneforone/docker-mesosphere-base:latest
 
 MAINTAINER 1For1
 
-ENV SPARK_VERSION 1.6.1-bin-hadoop2.6
+ENV SPARK_VERSION 1.6.2-bin-hadoop2.6
 
 ENV SPARK_MASTER_OPTS="-Dspark.driver.port=7001 -Dspark.fileserver.port=7002 -Dspark.broadcast.port=7003 -Dspark.replClassServer.port=7004 -Dspark.blockManager.port=7005 -Dspark.executor.port=7006 -Dspark.ui.port=4040 -Dspark.broadcast.factory=org.apache.spark.broadcast.HttpBroadcastFactory"
 ENV SPARK_WORKER_OPTS="-Dspark.driver.port=7001 -Dspark.fileserver.port=7002 -Dspark.broadcast.port=7003 -Dspark.replClassServer.port=7004 -Dspark.blockManager.port=7005 -Dspark.executor.port=7006 -Dspark.ui.port=4040 -Dspark.broadcast.factory=org.apache.spark.broadcast.HttpBroadcastFactory"
@@ -15,7 +15,7 @@ ENV SPARK_MASTER_WEBUI_PORT 8080
 ENV SPARK_WORKER_PORT 8888
 ENV SPARK_WORKER_WEBUI_PORT 9091
 ENV MASTER mesos://10.1.10.211:5050
-ENV SPARK_EXECUTOR_URI http://10.1.10.213:1080/spark-1.6.1-bin-hadoop2.6.tgz
+ENV SPARK_EXECUTOR_URI http://10.1.10.213:1080/spark-1.6.2-bin-hadoop2.6.tgz
 
 
 WORKDIR /app/
